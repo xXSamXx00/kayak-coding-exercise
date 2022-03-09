@@ -17,7 +17,6 @@
           </label>
         </div>
       </div>
-      <!-- <TheFilter :filters="filter" @filter_alliance="filterAlliance" /> -->
       <div class="row">
         <TheCard
           v-for="company in filterCompany"
@@ -35,7 +34,6 @@
 
 <script>
 import TheHeader from "./components/TheHeader.vue";
-// import TheFilter from "./components/TheFilter.vue";
 import TheCard from "./components/TheCard.vue";
 import jsonp from "jsonp";
 
@@ -63,7 +61,6 @@ export default {
   },
   components: {
     TheHeader,
-    // TheFilter,
     TheCard,
   },
   methods: {
@@ -77,7 +74,7 @@ export default {
         return this.companies;
       } else {
         let filterCompany = this.companies.filter((company) => {
-          return company.alliance.includes(this.selectFilter);
+          return this.selectFilter.includes(company.alliance);
         });
         return filterCompany;
       }
